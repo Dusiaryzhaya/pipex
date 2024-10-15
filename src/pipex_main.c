@@ -6,7 +6,7 @@
 /*   By: anilchen <anilchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:24:49 by anilchen          #+#    #+#             */
-/*   Updated: 2024/10/15 13:14:07 by anilchen         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:14:16 by anilchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	execute_cmd1(int file1, int *fd, t_args *arg_list, char *envp[])
 	char	*full_path;
 
 	full_path = find_full_path(arg_list->cmd1_args[0], arg_list, envp);
+	if (!full_path)
+		error_msg(arg_list->cmd1_args[0], arg_list, 0);
 	dup2(file1, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
@@ -40,6 +42,8 @@ void	execute_cmd2(int file2, int *fd, t_args *arg_list, char *envp[])
 	char	*full_path;
 
 	full_path = find_full_path(arg_list->cmd2_args[0], arg_list, envp);
+	if (!full_path)
+		error_msg(arg_list->cmd2_args[0], arg_list, 0);
 	dup2(fd[0], STDIN_FILENO);
 	dup2(file2, STDOUT_FILENO);
 	close(fd[1]);

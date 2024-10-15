@@ -6,7 +6,7 @@
 /*   By: anilchen <anilchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:24:49 by anilchen          #+#    #+#             */
-/*   Updated: 2024/10/14 13:35:05 by anilchen         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:39:43 by anilchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	main(int argc, char *argv[], char *envp[])
 	}
 	arg_list = (t_args *)malloc(sizeof(t_args));
 	if (!arg_list)
-		exit(1);
+		exit(EXIT_FAILURE);
 	assign_vars(arg_list, argv);
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
 		return (process_heredoc_args(argc, argv, arg_list, envp));

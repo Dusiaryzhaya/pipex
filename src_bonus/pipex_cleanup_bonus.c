@@ -6,7 +6,7 @@
 /*   By: anilchen <anilchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:52:35 by anilchen          #+#    #+#             */
-/*   Updated: 2024/10/09 15:52:54 by anilchen         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:22:04 by anilchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,23 @@ void	free_all_paths(char **all_paths)
 
 void	free_list(t_args *arg_list)
 {
-	t_command	*current;
+	t_command	*cur;
 	t_command	*next;
 	int			i;
 
-	current = arg_list->cmd_list;
-	while (current != NULL)
+	cur = arg_list->cmd_list;
+	while (cur != NULL)
 	{
-		next = current->next;
+		next = cur->next;
 		i = 0;
-		while (current->args[i])
+		while (cur->args[i])
 		{
-			free(current->args[i]);
+			free(cur->args[i]);
 			i++;
 		}
-		free(current->args);
-		free(current);
-		current = next;
+		free(cur->args);
+		free(cur);
+		cur = next;
 	}
 }
 
