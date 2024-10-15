@@ -6,7 +6,7 @@
 /*   By: anilchen <anilchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:40:29 by anilchen          #+#    #+#             */
-/*   Updated: 2024/10/14 15:36:50 by anilchen         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:34:29 by anilchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ void	create_fork(pid_t *pid, t_args *arg_list)
 
 void	check_file_readable(const char *filename, t_args *arg_list)
 {
-	if (access(filename, F_OK) != 0)
-	{
-		error_msg(filename, arg_list, 1);
-	}
-	if (access(filename, R_OK) != 0)
+	if (access(filename, F_OK) != 0 || access(filename, R_OK) != 0)
 	{
 		error_msg(filename, arg_list, 1);
 	}

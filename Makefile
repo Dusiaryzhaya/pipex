@@ -6,7 +6,7 @@
 #    By: anilchen <anilchen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 17:50:06 by anilchen          #+#    #+#              #
-#    Updated: 2024/10/02 13:52:01 by anilchen         ###   ########.fr        #
+#    Updated: 2024/10/15 12:14:39 by anilchen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ CFLAGS = -g -Wall -Wextra -Werror -I$(LIBFT_DIR)
 
 LIBFT_DIR = libft
 LIBFT_NAME = $(LIBFT_DIR)/libft.a
-
-MLX_DIR = minilibx-linux
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRC_DIR = src
 SRC_BONUS_DIR = src_bonus
@@ -44,16 +41,16 @@ $(LIBFT_NAME):
 	@echo $(MSG_LIBFT_CREATED)
 	
 $(NAME): $(OBJ) $(LIBFT_NAME)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_NAME) $(MLX_FLAGS) -o $(NAME) 
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT_NAME) -o $(NAME) 
 	@echo $(MSG_EXEC_CREATED)
 
-$(OBJ_DIR):
+$(OBJ_DIR):	
 	@mkdir -p $(OBJ_DIR)
 
 bonus: $(LIBFT_NAME) $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ_BONUS) $(LIBFT_NAME)
-	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT_NAME) $(MLX_FLAGS) -o $(NAME_BONUS) 
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT_NAME) -o $(NAME_BONUS) 
 	@echo $(MSG_BONUS_EXEC_CREATED)
 
 $(OBJ_BONUS_DIR):
